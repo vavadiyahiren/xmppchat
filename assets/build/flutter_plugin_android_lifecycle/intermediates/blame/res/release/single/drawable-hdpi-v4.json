@@ -1,0 +1,22 @@
+[
+    {
+        "merged": "/Users/xrstudio/Documents/Krunal/flutterxmppchat/build/flutter_plugin_android_lifecycle/intermediates/res/merged/release/drawable-hdpi-v4/notification_bg_normal_pressed.9.png",
+        "source": "/Users/xrstudio/.gradle/caches/transforms-2/files-2.1/3bb0da80d5d9f3e0aae8bdfcb99490b4/core-1.6.0/res/drawable-hdpi-v4/notification_bg_normal_pressed.9.png"
+    },
+    {
+        "merged": "/Users/xrstudio/Documents/Krunal/flutterxmppchat/build/flutter_plugin_android_lifecycle/intermediates/res/merged/release/drawable-hdpi-v4/notification_bg_normal.9.png",
+        "source": "/Users/xrstudio/.gradle/caches/transforms-2/files-2.1/3bb0da80d5d9f3e0aae8bdfcb99490b4/core-1.6.0/res/drawable-hdpi-v4/notification_bg_normal.9.png"
+    },
+    {
+        "merged": "/Users/xrstudio/Documents/Krunal/flutterxmppchat/build/flutter_plugin_android_lifecycle/intermediates/res/merged/release/drawable-hdpi-v4/notify_panel_notification_icon_bg.png",
+        "source": "/Users/xrstudio/.gradle/caches/transforms-2/files-2.1/3bb0da80d5d9f3e0aae8bdfcb99490b4/core-1.6.0/res/drawable-hdpi-v4/notify_panel_notification_icon_bg.png"
+    },
+    {
+        "merged": "/Users/xrstudio/Documents/Krunal/flutterxmppchat/build/flutter_plugin_android_lifecycle/intermediates/res/merged/release/drawable-hdpi-v4/notification_bg_low_normal.9.png",
+        "source": "/Users/xrstudio/.gradle/caches/transforms-2/files-2.1/3bb0da80d5d9f3e0aae8bdfcb99490b4/core-1.6.0/res/drawable-hdpi-v4/notification_bg_low_normal.9.png"
+    },
+    {
+        "merged": "/Users/xrstudio/Documents/Krunal/flutterxmppchat/build/flutter_plugin_android_lifecycle/intermediates/res/merged/release/drawable-hdpi-v4/notification_bg_low_pressed.9.png",
+        "source": "/Users/xrstudio/.gradle/caches/transforms-2/files-2.1/3bb0da80d5d9f3e0aae8bdfcb99490b4/core-1.6.0/res/drawable-hdpi-v4/notification_bg_low_pressed.9.png"
+    }
+]

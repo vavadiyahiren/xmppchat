@@ -1,0 +1,20 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="org.xrstudio.xmpp" >
+4
+5    <uses-sdk android:minSdkVersion="16" />
+5-->/Users/xrstudio/Documents/Krunal/piyushbhai_xmpp/android/src/main/AndroidManifest.xml
+6
+7    <application>
+7-->/Users/xrstudio/Documents/Krunal/piyushbhai_xmpp/android/src/main/AndroidManifest.xml:4:5-10:19
+8        <service
+8-->/Users/xrstudio/Documents/Krunal/piyushbhai_xmpp/android/src/main/AndroidManifest.xml:6:9-8:39
+9            android:name="org.xrstudio.xmpp.flutter_xmpp.Connection.FlutterXmppConnectionService"
+9-->/Users/xrstudio/Documents/Krunal/piyushbhai_xmpp/android/src/main/AndroidManifest.xml:6:18-86
+10            android:enabled="true"
+10-->/Users/xrstudio/Documents/Krunal/piyushbhai_xmpp/android/src/main/AndroidManifest.xml:7:13-35
+11            android:exported="false" />
+11-->/Users/xrstudio/Documents/Krunal/piyushbhai_xmpp/android/src/main/AndroidManifest.xml:8:13-37
+12    </application>
+13
+14</manifest>

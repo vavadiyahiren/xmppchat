@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "/Users/xrstudio/Documents/Krunal/flutterxmppchat/build/share/intermediates/res/merged/release/layout/notification_template_part_time.xml",
+        "source": "/Users/xrstudio/.gradle/caches/transforms-2/files-2.1/3bb0da80d5d9f3e0aae8bdfcb99490b4/core-1.6.0/res/layout/notification_template_part_time.xml"
+    },
+    {
+        "merged": "/Users/xrstudio/Documents/Krunal/flutterxmppchat/build/share/intermediates/res/merged/release/layout/notification_template_icon_group.xml",
+        "source": "/Users/xrstudio/.gradle/caches/transforms-2/files-2.1/3bb0da80d5d9f3e0aae8bdfcb99490b4/core-1.6.0/res/layout/notification_template_icon_group.xml"
+    },
+    {
+        "merged": "/Users/xrstudio/Documents/Krunal/flutterxmppchat/build/share/intermediates/res/merged/release/layout/custom_dialog.xml",
+        "source": "/Users/xrstudio/.gradle/caches/transforms-2/files-2.1/3bb0da80d5d9f3e0aae8bdfcb99490b4/core-1.6.0/res/layout/custom_dialog.xml"
+    },
+    {
+        "merged": "/Users/xrstudio/Documents/Krunal/flutterxmppchat/build/share/intermediates/res/merged/release/layout/notification_template_part_chronometer.xml",
+        "source": "/Users/xrstudio/.gradle/caches/transforms-2/files-2.1/3bb0da80d5d9f3e0aae8bdfcb99490b4/core-1.6.0/res/layout/notification_template_part_chronometer.xml"
+    },
+    {
+        "merged": "/Users/xrstudio/Documents/Krunal/flutterxmppchat/build/share/intermediates/res/merged/release/layout/notification_action_tombstone.xml",
+        "source": "/Users/xrstudio/.gradle/caches/transforms-2/files-2.1/3bb0da80d5d9f3e0aae8bdfcb99490b4/core-1.6.0/res/layout/notification_action_tombstone.xml"
+    },
+    {
+        "merged": "/Users/xrstudio/Documents/Krunal/flutterxmppchat/build/share/intermediates/res/merged/release/layout/notification_action.xml",
+        "source": "/Users/xrstudio/.gradle/caches/transforms-2/files-2.1/3bb0da80d5d9f3e0aae8bdfcb99490b4/core-1.6.0/res/layout/notification_action.xml"
+    }
+]

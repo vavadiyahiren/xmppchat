@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "/Users/xrstudio/Documents/Krunal/flutterxmppchat/build/xmpp_plugin/intermediates/res/merged/release/layout-v21/notification_action.xml",
+        "source": "/Users/xrstudio/.gradle/caches/transforms-2/files-2.1/3bb0da80d5d9f3e0aae8bdfcb99490b4/core-1.6.0/res/layout-v21/notification_action.xml"
+    },
+    {
+        "merged": "/Users/xrstudio/Documents/Krunal/flutterxmppchat/build/xmpp_plugin/intermediates/res/merged/release/layout-v21/notification_action_tombstone.xml",
+        "source": "/Users/xrstudio/.gradle/caches/transforms-2/files-2.1/3bb0da80d5d9f3e0aae8bdfcb99490b4/core-1.6.0/res/layout-v21/notification_action_tombstone.xml"
+    },
+    {
+        "merged": "/Users/xrstudio/Documents/Krunal/flutterxmppchat/build/xmpp_plugin/intermediates/res/merged/release/layout-v21/notification_template_icon_group.xml",
+        "source": "/Users/xrstudio/.gradle/caches/transforms-2/files-2.1/3bb0da80d5d9f3e0aae8bdfcb99490b4/core-1.6.0/res/layout-v21/notification_template_icon_group.xml"
+    },
+    {
+        "merged": "/Users/xrstudio/Documents/Krunal/flutterxmppchat/build/xmpp_plugin/intermediates/res/merged/release/layout-v21/notification_template_custom_big.xml",
+        "source": "/Users/xrstudio/.gradle/caches/transforms-2/files-2.1/3bb0da80d5d9f3e0aae8bdfcb99490b4/core-1.6.0/res/layout-v21/notification_template_custom_big.xml"
+    }
+]
