@@ -2,7 +2,6 @@ import 'dart:async';
 import 'dart:developer';
 import 'dart:io' as fileInstance;
 import 'dart:isolate';
-
 import 'package:chatsample/blocs/ContactBloc.dart';
 import 'package:chatsample/blocs/MessageBloc.dart';
 import 'package:chatsample/db/api/MessageApi.dart';
@@ -29,19 +28,15 @@ void getMessages(SendPort mainSendPort) async {
       for (final Message element in messages) {
         if (element.senderJid.split('/')[0] == '${username}@xrstudio.in') {
           if (element.id != null) {
-            AppWidgets.sendCustomMessage(element, username);
-            AppWidgets.readReceipt(element.id);
+            await AppWidgets.sendCustomMessage(element, username);
+            await AppWidgets.readReceipt(element);
           }
         }
       }
-      Message singleMessage = await MessageApi.getParticularMessage();
-      int time = AppWidgets.findMaxTime(
-          singleMessage.time, singleMessage.deliveryReceiptTime, singleMessage.readReceiptTime);
-      AppWidgets.requestMamMessages(userName: username, requestSince: '$time');
       mainSendPort.send('Done');
     });
   } catch (e, s) {
-    print('get Message catch block $e///$s');
+    print('Isolate catch block ==> Error: $e StackTrace: $s');
   }
 }
 
@@ -68,6 +63,7 @@ class _ConversationPageState extends State<ConversationPage> {
   ReceivePort receivePort = ReceivePort();
   MessageBloc messageBloc;
   String userName;
+  int lengthOfMessage = 0;
 
   @override
   void initState() {
@@ -82,9 +78,26 @@ class _ConversationPageState extends State<ConversationPage> {
   @override
   void dispose() {
     ContactBloc.instance.setCurrentContact(Utils.emptyString);
-    // connectivityService.dispose();
     receivePort.close();
     super.dispose();
+  }
+
+  Future<void> createIsolate() async {
+    ReceivePort newReceivePort = ReceivePort();
+    final FlutterIsolate isolate = await FlutterIsolate.spawn(getMessages, newReceivePort.sendPort);
+    newReceivePort.listen((message) async {
+      if (message is SendPort) {
+        SendPort mainToIsolateStream = message;
+        mainToIsolateStream.send(
+          {"userName": "${widget.title}"},
+        );
+      }
+      if (message.toString() == 'Done') {
+        log('createIsolate killed');
+        isolate.kill();
+      }
+      print('New message from createIsolate: $message');
+    });
   }
 
   @override
@@ -105,6 +118,10 @@ class _ConversationPageState extends State<ConversationPage> {
                   List<Message> messages = new List<Message>();
                   if (snapshot.hasData) {
                     messages = snapshot.data;
+                    if (lengthOfMessage < messages.length) {
+                      lengthOfMessage = messages.length;
+                      createIsolate();
+                    }
                     messages.sort((a, b) =>
                         b.time.toString().toLowerCase().compareTo(a.time.toString().toLowerCase()));
                   }
@@ -312,6 +329,9 @@ class _ConversationPageState extends State<ConversationPage> {
   void getMessagesByIsolate() async {
     try {
       isolate = await FlutterIsolate.spawn(getMessages, receivePort.sendPort);
+      // ReceivePort receivePort = ReceivePort();
+      // FlutterIsolate isolate = await FlutterIsolate.spawn(getMessages, receivePort.sendPort);
+      // var database = await MessageApi.databaseHelper.db;
       receivePort.listen((message) async {
         if (message is SendPort) {
           SendPort mainToIsolateStream = message;

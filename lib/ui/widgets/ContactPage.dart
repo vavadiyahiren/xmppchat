@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:chatsample/blocs/ContactBloc.dart';
 import 'package:chatsample/blocs/LoginBloc.dart';
 import 'package:chatsample/enums/connectivity_status.dart';
@@ -11,7 +9,6 @@ import 'package:chatsample/widgets/common_widgets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
-
 import 'ProfilePage.dart';
 import 'loginPage.dart';
 
@@ -84,7 +81,6 @@ class _ContactPageState extends State<ContactPage> {
             style: TextStyle(color: Colors.white),
             onChanged: (searchText) {
               setState(() {});
-              log('searchBoxController:${searchBoxController.text}');
             },
           ),
         ),

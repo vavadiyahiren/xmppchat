@@ -8,10 +8,6 @@ class MessageApi {
   static DatabaseHelper databaseHelper = new DatabaseHelper();
 
   static Future<int> saveMessage(Message message) async {
-    log('saveMessage message~~>> $message');
-    log('saveMessage id~~>> ${message.id}');
-    log('saveMessage message~~>> ${message.message}');
-
     var dbClient = await databaseHelper.db;
     int res = await dbClient.insert("Message", message.toMap());
     log('dbClient response $res');
@@ -31,7 +27,19 @@ class MessageApi {
 
   static Future<int> getLastMessageTime() async {
     var dbClient = await databaseHelper.db;
-    return Sqflite.firstIntValue(await dbClient.rawQuery('SELECT max(time) FROM Message'));
+    return Sqflite.firstIntValue(await dbClient.rawQuery('SELECT max(time) FROM Message WHERE dir = ?', [1]));
+  }
+
+  static Future<int> getLastDeliveryReceiptTime() async {
+    var dbClient = await databaseHelper.db;
+    return Sqflite.firstIntValue(
+        await dbClient.rawQuery('SELECT max(deliveryReceiptTime) FROM Message WHERE dir = ?', [1]));
+  }
+
+  static Future<int> getLastReadReceiptTimeTime() async {
+    var dbClient = await databaseHelper.db;
+    return Sqflite.firstIntValue(
+        await dbClient.rawQuery('SELECT max(readReceiptTime) FROM Message WHERE dir = ?', [1]));
   }
 
   static Future<Message> getMessage(String messageId) async {

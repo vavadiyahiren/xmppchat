@@ -1,5 +1,5 @@
-import 'dart:developer';
-
+import 'package:chatsample/models/User.dart';
+import 'package:chatsample/services/sharedPrefs.dart';
 import 'package:chatsample/services/xmppService.dart';
 import 'package:chatsample/ui/shared/app_colors.dart';
 import 'package:chatsample/utils/Utils.dart';
@@ -22,22 +22,21 @@ class _GroupMemberInfoState extends State<GroupMemberInfo> {
   List<dynamic> fullList = [];
   List<dynamic> owners = [];
   List<dynamic> memberList = [];
+  User user;
   TextEditingController _editingController = TextEditingController();
 
   @override
   void initState() {
     super.initState();
     getAdmin();
+    getUser();
+  }
+
+  getUser() async {
+    user = await SharedPrefs.getUser();
   }
 
   getAdmin() async {
-    // admins = await XmppService.instance.getAdmins(groupName: widget.groupName);
-    // owners = await XmppService.instance.getOwners(groupName: widget.groupName);
-    // memberList = await XmppService.instance.getMember(groupName: widget.groupName);
-    // setState(() {});
-    // fullList.addAll(owners);
-    // fullList.addAll(admins);
-    // fullList.addAll(memberList);
     owners = [];
     admins = [];
     memberList = [];
@@ -53,7 +52,6 @@ class _GroupMemberInfoState extends State<GroupMemberInfo> {
 
   @override
   Widget build(BuildContext context) {
-    log('admins ~~>>${admins.toString()}');
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -172,31 +170,34 @@ class _GroupMemberInfoState extends State<GroupMemberInfo> {
                 itemCount: fullList.length,
                 itemBuilder: (context, index) {
                   return GestureDetector(
-                    onTap: () {
-                      setState(() {});
-                      AppWidgets.modalBottomSheet(
-                        context,
-                        groupName: widget.groupName,
-                        MembersId: fullList[index],
-                        CreateOnTap: () async {
-                          XmppService.instance.createAdmin(
-                              groupName: widget.groupName, allMembersId: fullList[index]);
-                          getAdmin();
-                          Navigator.pop(context);
-                        },
-                        RemoveAdminOnTap: () {
-                          XmppService.instance.removeAdmin(
-                              groupName: widget.groupName, allMembersId: fullList[index]);
-                          getAdmin();
-                          Navigator.of(context).pop();
-                        },
-                        RemoveMemberOnTap: () {
-                          XmppService.instance.removeMember(
-                              groupName: widget.groupName, allMembersId: fullList[index]);
-                          getAdmin();
-                          Navigator.of(context).pop();
-                        },
-                      );
+                    onTap: () async {
+                      if (Utils.removeDomain(fullList[index]) != user.username &&
+                          memberList.contains('${Utils.addDomain(user.username)}') == false) {
+                        setState(() {});
+                        AppWidgets.modalBottomSheet(
+                          context,
+                          groupName: widget.groupName,
+                          MembersId: fullList[index],
+                          CreateOnTap: () async {
+                            XmppService.instance.createAdmin(
+                                groupName: widget.groupName, allMembersId: fullList[index]);
+                            getAdmin();
+                            Navigator.pop(context);
+                          },
+                          RemoveAdminOnTap: () {
+                            XmppService.instance.removeAdmin(
+                                groupName: widget.groupName, allMembersId: fullList[index]);
+                            getAdmin();
+                            Navigator.of(context).pop();
+                          },
+                          RemoveMemberOnTap: () {
+                            XmppService.instance.removeMember(
+                                groupName: widget.groupName, allMembersId: fullList[index]);
+                            getAdmin();
+                            Navigator.of(context).pop();
+                          },
+                        );
+                      }
                     },
                     child: ListTile(
                       contentPadding: EdgeInsets.symmetric(horizontal: 2, vertical: 5),

@@ -15,7 +15,7 @@ class WelComeScreen extends StatelessWidget {
     return Sizer(
       builder: (context, orientation, deviceType) {
         return MaterialApp(
-          title: 'Flutter Demo',
+          title: 'XmppChat',
           theme: ThemeData(
             primarySwatch: Colors.blueGrey,
             // textTheme: GoogleFonts.latoTextTheme(textTheme).copyWith(

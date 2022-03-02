@@ -1,5 +1,5 @@
-import 'dart:developer';
 import 'dart:io';
+import 'dart:math';
 
 import 'package:bubble/bubble.dart';
 import 'package:chatsample/db/api/ConactApi.dart';
@@ -420,21 +420,7 @@ class AppWidgets {
   }
 
   static int findMaxTime(int a, int b, int c) {
-    int time;
-    if (a > b) {
-      if (a > c) {
-        time = a;
-      } else {
-        time = c;
-      }
-    } else {
-      if (b > c) {
-        time = b;
-      } else {
-        time = c;
-      }
-    }
-    return time;
+    return [a, b, c].reduce(max);
   }
 
   ///SignUp Page
@@ -861,26 +847,23 @@ class AppWidgets {
       "",
       element.id.toString(),
       Utils.readReceipt,
-      int.parse(element.id),
+      DateTime.now().millisecondsSinceEpoch,
     );
   }
 
   static void requestMamMessages({String userName, String requestSince}) async {
-    print('requestMamMessages in conversation start ${requestSince} userName:$userName');
     await XmppService.instance.requestMamMessages(
       userJid: userName,
       requestBefore: '',
       requestSince: requestSince,
-      limit: '',
+      limit: '10000',
     );
-    print('requestMamMessages in conversation end');
   }
 
-  static void readReceipt(String msgId) async {
-    Message message = await MessageApi.getMessage(msgId);
+  static void readReceipt(Message msgId) async {
+    Message message = await MessageApi.getMessage(msgId.id);
     if (message != null) {
       message.setisReadSent(1);
-      message.setreadReceiptTime(DateTime.now().millisecondsSinceEpoch);
       await MessageApi.update(message);
     }
   }

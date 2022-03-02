@@ -32,7 +32,7 @@ class QueueBloc {
   QueueBloc.internal() {
     queueListObserver.listen((queueList) => _processQueue(queueList));
     queueObserver.listen((data) => _processSingleQueue(data));
-    XmppService.instance.xmppStattusObserver
+    XmppService.instance.xmppStatusObserver
         .listen((status) => _listenXmppStatus(status));
     XmppService.instance.getXmppStatus();
     ConnectivityService.instance.connectivityObserver

@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:chatsample/db/api/ConactApi.dart';
 import 'package:chatsample/models/Contact.dart';
 import 'package:chatsample/services/xmppService.dart';
@@ -7,7 +6,6 @@ import 'package:intl/intl.dart';
 import 'package:path_provider/path_provider.dart';
 
 class Utils {
-
   static final String domain = "xrstudio.in";
   static final String host = "xrstudio.in";
   static final String mucServerId = "conference.";
@@ -23,7 +21,6 @@ class Utils {
   static final String deliveryAck = "Delivery-Ack";
   static final String addMember = "AddMember";
   static final String readReceipt = "Read-Receipt";
-
   static final int conversationTypeNormal = 0;
   static final int conversationTypeGroup = 1;
   static final String dummyGroupName = '${getDomainBareJid('testGroup1')}';
@@ -88,14 +85,14 @@ class Utils {
 
     if (groupId.isNotEmpty) {
       bool isGroupJoinSuccess = await XmppService.instance.joinMucGroup("$groupId,$timeStamp");
-      print('joinSingleMucGroups groupId $groupId time: $timeStamp isGroupJoinSuccess: $isGroupJoinSuccess');
+      print('joinSingleMucGroups groupId $groupId && time: $timeStamp && isGroupJoinSuccess: $isGroupJoinSuccess');
       return isGroupJoinSuccess;
     }
     return false;
   }
 
   static createSingleMucGroups(String groupName) async {
-    print('createSingleMucGroups: 1 createSingleMucGroups $groupName');
+    print('createSingleMucGroups: $groupName');
 
     if (groupName.isNotEmpty) {
       XmppService.instance.createMucGroups(groupName);
@@ -110,32 +107,8 @@ class Utils {
   }
   static String massageTime(val) {
     DateTime date = DateTime.fromMillisecondsSinceEpoch(val);
-    String selTime =
-        date.hour.toString() + ':' + date.minute.toString() + ':00';
-    var dateString =
-    DateFormat.jm().format(DateFormat("hh:mm:ss").parse(selTime));
+    String selTime = date.hour.toString() + ':' + date.minute.toString() + ':00';
+    var dateString = DateFormat.jm().format(DateFormat("hh:mm:ss").parse(selTime));
     return dateString;
   }
-// static joinDummyGroup() {
-//   List<String> allGroupsIds = [dummyGroupName];
-//   XmppService.instance.joinMucGroups(allGroupsIds);
-// }
-
-// static sendDummyGroupChatMessage() async {
-//   int currentTime = new DateTime.now().millisecondsSinceEpoch;
-//   String id = "$currentTime";
-//
-//   Message message = Message(
-//       id,
-//       'test $currentTime',
-//       0,
-//       0,
-//       dummyGroupName,
-//       currentTime,
-//       XmppService.instance.user.username,
-//       Utils.conversationTypeGroup);
-//   if (message != null) {
-//     XmppService.instance.sendMessage(message);
-//   }
-// }
 }

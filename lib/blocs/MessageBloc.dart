@@ -169,10 +169,8 @@ class MessageBloc {
       return;
     }
     String to = Utils.removeDomain(message.to);
-    log('saveReceivedMessage Id: ~~>> ${message.id}');
     await MessageApi.saveMessage(message);
     Contact contact = await ContactApi.getContact(message.to);
-    print("contact : $contact");
     if (contact == null) {
       contact = new Contact(message.time, to, to, "", message.time, message.id, Utils.conversationTypeNormal);
 //      await ContactBloc.instance.addContact(to);
